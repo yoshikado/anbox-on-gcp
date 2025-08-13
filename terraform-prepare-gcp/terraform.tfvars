@@ -7,5 +7,5 @@ project_id = "anbox-demo"
 ssh_public_key_path = "~/.ssh/id_rsa.pub"
 
 # You can override other variables here if you want, for example:
-region         = "asia-northeast1"
+region         = "asia-northeast3"
 # environment_name = "anbox-prod"
