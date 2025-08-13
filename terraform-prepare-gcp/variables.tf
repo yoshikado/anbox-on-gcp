@@ -11,6 +11,12 @@ variable "region" {
   default     = "us-central1"
 }
 
+variable "vpc_name" {
+  description = "vpc name"
+  type        = string
+  default     = "default"
+}
+
 variable "environment_name" {
   description = "An environment name that is prefixed to resource names."
   type        = string
@@ -26,7 +32,7 @@ variable "public_subnet_cidr" {
 variable "private_subnet_cidr" {
   description = "The IP range (CIDR notation) for the private subnet."
   type        = string
-  default     = "10.0.1.0/24"
+  default     = "10.146.0.0/20"
 }
 
 variable "private_domain_name" {
@@ -38,7 +44,7 @@ variable "private_domain_name" {
 variable "bastion_machine_type" {
   description = "The machine type for the bastion host."
   type        = string
-  default     = "e2-medium" # Equivalent to t2.medium
+  default     = "e2-medium"
 }
 
 variable "bastion_image" {
@@ -47,16 +53,16 @@ variable "bastion_image" {
   default     = "ubuntu-os-cloud/ubuntu-2404-lts-amd64"
 }
 
-variable "ssh_public_key" {
-  description = "The public SSH key that will be injected into the bastion host."
+variable "ssh_public_key_path" {
+  description = "The local path to the public SSH key that will be injected into the bastion host."
   type        = string
-  sensitive   = true
+  default     = "~/.ssh/id_rsa.pub"
 }
 
 variable "ssh_user" {
   description = "The username associated with the public SSH key."
   type        = string
-  default     = "gcp_user"
+  default     = "ubuntu"
 }
 
 variable "juju_controller_iam_username" {
