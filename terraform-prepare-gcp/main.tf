@@ -49,16 +49,16 @@ provider "google" {
 #}
 
 # Firewall rule to allow SSH to the bastion host
-resource "google_compute_firewall" "allow_ssh" {
+resource "google_compute_firewall" "allow_ssh_bastion" {
   #depends_on  = [google_compute_network.vpc]
-  name    = "bastion-allow-ssh"
+  name    = "${var.environment_name}-bastion-allow-ssh"
   network = var.vpc_name
   allow {
     protocol = "tcp"
     ports    = ["22"]
   }
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["bastion-host"]
+  target_tags   = ["${var.environment_name}-bastion-host"]
 }
 
 # Firewall rule to allow all inside private subnet
@@ -96,7 +96,7 @@ resource "google_compute_instance" "bastion" {
     scopes = ["cloud-platform"] # Allows full access to all cloud APIs, controlled by the IAM role
   }
 
-  tags = ["bastion-host"]
+  tags = ["${var.environment_name}-bastion-host"]
 
   boot_disk {
     initialize_params {

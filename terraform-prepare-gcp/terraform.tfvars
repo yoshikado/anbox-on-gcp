@@ -7,5 +7,7 @@ project_id = "anbox-demo"
 ssh_public_key_path = "~/.ssh/id_rsa.pub"
 
 # You can override other variables here if you want, for example:
-region         = "asia-northeast3"
-# environment_name = "anbox-prod"
+region                       = "asia-northeast3"
+environment_name             = "anbox-yoshi"
+juju_controller_iam_username = "anbox-juju-controller-yoshi"
+private_subnet_cidr          = "10.178.0.0/20"  # the default subnet in asia-northeast3
